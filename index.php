@@ -1,7 +1,29 @@
 <?php
-  if (isset($_GET['randomPassword'])) {
+  $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $numbers = '0123456789';
+  $symbols = '!?&%$<>^+-*/()[]{}@#_=';
 
-  }
+  if (isset($_GET['password'])) {
+    $lunghezzaPassword= $_GET['password'];
+    $AgreedDuplication= $_GET['duplicationNumber'];
+
+    echo createdPassword($lunghezzaPassword, $letters, $numbers, $symbols, $AgreedDuplication);
+  };
+
+  function createdPassword($lunghezzaPassword, $letters, $numbers, $symbols, $AgreedDuplication) {
+    $newPassword= '';
+    $AllSymobols = $letters . $numbers . $symbols;
+
+    while(strlen($newPassword) < $lunghezzaPassword ) {
+        $indexLetters = rand(0, strlen($AllSymobols) - 1);
+
+        if($AgreedDuplication == true || !str_contains($newPassword, $AllSymobols[$indexLetters])){
+            $newPassword .= $AllSymobols[$indexLetters]; 
+        };
+    }
+
+    return $newPassword;
+  } 
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +45,30 @@
             <div class="row">
                 <div class="col-2">
                     <label for="password" class="form-label">Lunghezza password</label>
-                    <input type="number" id="password" name="randomPassword" class="form-control my-2">
+                    <input type="number" id="password" name="password" class="form-control my-2">
+                </div>
+
+                <div class='col-4'>
+                    <span>Consenti caratteri duplicati</span>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="duplicationNumber" id="duplicationNumber" value='1'>
+                        <label class="form-check-label" for="duplicationNumber">
+                           Si
+                        </label>
+                    </div>
+            
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="duplicationNumber" id="duplicationNumber" value='0'>
+                      <label class="form-check-label" for="duplicationNumber">
+                        No
+                      </label>
+                    </div>
                 </div>
             </div>
 
             <button class="btn btn-primary" type="submit">Invia</button>
         </form>
+
     </main>
 
     <!-- BOOTSTRAP'S JAVASCRIPT -->
