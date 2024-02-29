@@ -22,45 +22,46 @@
     <!-- BOOTSTRAP'S LINK -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-dark">
     <header>
-        <h1 class="text-center">Generatore di password</h1>
+        <h1 class="text-center text-white my-4">Generatore di password</h1>
     </header>
 
-    <main>
-        <form action="index.php" method="get">
-            <div class="row">
-                <div class="col-2">
-                    <label for="password" class="form-label">Lunghezza password</label>
-                    <input type="number" id="password" name="password" class="form-control my-2">
-                </div>
-
-                <div class='col-4'>
-                    <span>Consenti caratteri duplicati</span>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="duplicationNumber" id="duplicationNumber" value='1'>
-                        <label class="form-check-label" for="duplicationNumber">
-                           Si
-                        </label>
+    <main class="d-flex justify-content-center">
+        <div class="bg-white w-50 p-4 rounded-2">
+            <form action="index.php" method="get">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="password" class="form-label">Lunghezza password</label>
+                        <input type="number" id="password" name="password" class="form-control my-2">
                     </div>
-            
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="duplicationNumber" id="duplicationNumber" value='0'>
-                      <label class="form-check-label" for="duplicationNumber">
-                        No
-                      </label>
+    
+                    <div class='col-4'>
+                        <span>Consenti caratteri duplicati</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="duplicationNumber" id="duplicationNumber" value='1'>
+                            <label class="form-check-label" for="duplicationNumber">
+                               Si
+                            </label>
+                        </div>
+                
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="duplicationNumber" id="duplicationNumber" value='0'>
+                          <label class="form-check-label" for="duplicationNumber">
+                            No
+                          </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <button class="btn btn-primary" type="submit">Invia</button>
-        </form>
-
-        <p>
-            Password generata: 
-
-            <h2><?= $response ?></h2>
-        </p>
+    
+                <button class="btn btn-primary" type="submit">Invia</button>
+            </form>
+    
+            <p class="mt-4">
+                Password generata: 
+                <h2><?= $response ?></h2>
+            </p>
+        </div>
     </main>
 
     <!-- BOOTSTRAP'S JAVASCRIPT -->
